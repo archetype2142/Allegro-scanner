@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Barcode No Logins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @barcode_no_logins.each do |barcode_no_login| %>
+      <tr>
+        <td><%= barcode_no_login.code %></td>
+        <td><%= link_to 'Show', barcode_no_login %></td>
+        <td><%= link_to 'Edit', edit_barcode_no_login_path(barcode_no_login) %></td>
+        <td><%= link_to 'Destroy', barcode_no_login, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Barcode No Login', new_barcode_no_login_path %>

@@ -21,6 +21,4 @@ test:
 
   production:
   <<: *default
-  database: tardis-back_production
-  username: tardis-back
-  password: <%= ENV['HACK-BACK_DATABASE_PASSWORD'] %>
+  database: tardis-back

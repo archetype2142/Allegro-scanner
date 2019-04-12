@@ -1,0 +1,22 @@
+<%= form_with(model: barcode_no_login, local: true) do |form| %>
+  <% if barcode_no_login.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(barcode_no_login.errors.count, "error") %> prohibited this barcode_no_login from being saved:</h2>
+
+      <ul>
+      <% barcode_no_login.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

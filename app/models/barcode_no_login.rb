@@ -1,0 +1,2 @@
+class BarcodeNoLogin < ApplicationRecord
+end

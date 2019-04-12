@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-    include DeviseTokenAuth::Concerns::User
-
-    devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :validatable
-    has_many :barcodes
+            # Include default devise modules.
+        devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+            include DeviseTokenAuth::Concerns::User
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
 end

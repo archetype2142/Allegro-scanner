@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Provider } from "unstated";
 import { Switch, Route } from "react-router-dom";
 // import { anyContainer } from "./containers/any";
-import LoginPage from "./views/LoginPageView"
+import LandingPage from './views/LandingPage'
 
 class App extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              component={LoginPage}
+              component={LandingPage}
             />
             {/* <Route path="/register" component={RegisterPage} /> */}
           </Switch>

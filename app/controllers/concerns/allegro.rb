@@ -1,8 +1,11 @@
 module Allegro	
-	def client_params
-		"0e99b00f9075418988e82936b17ff9bf:Shs2xU5omsPz3lfLGtkiq4xmkvjSbSfkBWSpwcGTxvPav2lzeAPCYxd6u9tNt"
+	def get_tokens
+		uri = URI.parse("https://allegro.pl/auth/oauth/token?grant_type=client_credentials") 
+	  	http = Net::HTTP.new(uri.host, uri.port)
+	  	http.use_ssl = true
+	    req = Net::HTTP::Post.new(uri, {'Authorization' => "Basic MGU5OWIwMGY5MDc1NDE4OTg4ZTgyOTM2YjE3ZmY5YmY6U2hzMnhVNW9tc1B6M2xmTEd0a2lxNHhta3ZqU2JTZmtCV1Nwd2NHVHh2UGF2Mmx6ZUFQQ1l4ZDZ1OXROdFVhZw=="})
+	    res = http.request(req)
+		JSON.parse(res.body) if res.code == "200"
 	end
-
-	private 
 end
 

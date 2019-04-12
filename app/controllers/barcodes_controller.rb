@@ -12,7 +12,6 @@ class BarcodesController < ApplicationController
   # GET /barcodes/1
   # GET /barcodes/1.json
   def show
-
   end
 
   # GET /barcodes/new
@@ -21,18 +20,18 @@ class BarcodesController < ApplicationController
   end
 
   # GET /barcodes/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /barcodes
   # POST /barcodes.json
   def create
     @barcode = Barcode.new(barcode_params)
     email = request.headers["uid"]
-
     @barcode.update_attributes(user: User.where(email: email).first)
+    
     respond_to do |format|
       if @barcode.save
+
         format.html { redirect_to @barcode, notice: 'Barcode was successfully created.' }
         format.json { render :show, status: :created, location: @barcode }
       else

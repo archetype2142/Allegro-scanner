@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
     skip_before_action :verify_authenticity_token
 
     include Response
-    # include Allegro
+    include Allegro
     include DeviseTokenAuth::Concerns::SetUserByToken
 end

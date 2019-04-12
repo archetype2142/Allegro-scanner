@@ -5,11 +5,11 @@ import Cookies from 'universal-cookie';
 class DictionaryContainer extends Container {
     state = {
         Polski: {
-            navbar: {
-                machines: "Maszyny",
-            },
-            gauges: {
-                temperature: "Temperatura"
+            header: {
+                login: "Zalogowanie",
+                register: "Rejestracja",
+                mainPage: "Strona Główna",
+                logout: "Wyloguj się"
             },
             login: {
                 loggingIn: "Logowanie",
@@ -26,14 +26,14 @@ class DictionaryContainer extends Container {
             }
         },
         English: {
-            navbar: {
-                machines: "Machines"
-            },
-            gauges: {
-                temperature: "Temperature"
+            header: {
+                login: "Login",
+                register: "Register",
+                mainPage: "Main Page",
+                logout: "Logout"
             },
             login: {
-                loggingIn: "Logging in",
+                loggingIn: "Log In",
                 password: "Password",
                 login: "Login",
                 registration: "Registration"

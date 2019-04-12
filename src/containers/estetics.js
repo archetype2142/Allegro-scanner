@@ -3,9 +3,6 @@ import React from 'react';
 import { Container } from 'unstated'
 import Cookies from 'universal-cookie';
 
-import logo from '../resources/logo.png'
-import white_logo from '../resources/white_logo.png'
-
 class EsteticContainer extends Container {
     state = {
         theme: 'dark'
@@ -78,12 +75,6 @@ class EsteticContainer extends Container {
             return this.cookies.get('theme')
         } else {
             return this.state.theme
-        }
-    }
-
-    getIcon(variant) {
-        if (variant === 'logo') {
-            if (esteticContainer.getTheme() === 'dark') { return <img src={white_logo} className='Logo' /> } else { return <img src={logo} className='Logo' /> }
         }
     }
 

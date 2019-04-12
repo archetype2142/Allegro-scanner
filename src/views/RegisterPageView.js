@@ -12,22 +12,13 @@ import {
   Popover
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { SHA256 } from "sha2";
-import { validateContainer } from "../containers/register";
 import { Subscribe } from "unstated";
 import Swal from "sweetalert2";
-
-import { configContainer } from "../containers/config";
 import { dictionaryContainer } from "../containers/dictionary";
 
 export default class RegisterPage extends Component {
   constructor(props, context) {
     super(props, context);
-    window.sessionStorage.getItem("bolidSession");
-    console.log(window.sessionStorage.getItem("bolidSession"));
-    if (window.sessionStorage.getItem("bolidSession") !== null) {
-      window.location.href = "/devices";
-    }
 
     this.state = {
       email: "",
@@ -105,6 +96,7 @@ export default class RegisterPage extends Component {
         errorPasswordLenght === false &&
         errorPasswordMatch === false
       ) {
+        console.log(this.state)
         this.fetchData();
       } else {
         console.log("TODO Swal, Check errors");
@@ -125,27 +117,25 @@ export default class RegisterPage extends Component {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
-        passwordHash: SHA256(this.state.password).toString("hex")
+        password: this.state.password
       }),
       headers: { "Content-Type": "application/json" }
     };
     const request = await fetch(
-      configContainer.getUrl() + "/api/v1/users/register",
+      "http://tardis-back.herokuapp.com/auth",
       requestData
     );
     const response = await request.json();
-    const success = !response.error;
-    if (success) {
-      const session = response.session;
-      validateContainer.updateSession(session);
+    console.log(response)
+    var error = true;
 
-      const expirationTime = response.expirationTime;
-      validateContainer.updateExpirationTime(expirationTime);
-
-      const authLevel = response.authLevel;
-      validateContainer.updateAuthLevel(authLevel);
+    if (response.status === "error") {
+      error = true
+    } else if (response.status === "success") {
+      error = false
     }
-    if (success) {
+
+    if (!error) {
       Swal.fire({
         title: "Rejestracja udana",
         type: "success",
@@ -218,17 +208,13 @@ export default class RegisterPage extends Component {
                     />
                   </Form.Group>
 
-                  <Subscribe to={[validateContainer]}>
-                    {counterContainer => (
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        onClick={this.handleSubmit}
-                      >
-                        {dictionaryContainer.getText("register", "register")}
-                      </Button>
-                    )}
-                  </Subscribe>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    onClick={this.handleSubmit}
+                  >
+                    {dictionaryContainer.getText("register", "register")}
+                  </Button>
                   <Link to="/" className="btn btn-link">
                     {dictionaryContainer.getText("register", "back")}
                   </Link>

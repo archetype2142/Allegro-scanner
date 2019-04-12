@@ -51,29 +51,29 @@ export default class LoginPage extends Component {
       method: "POST",
       body: JSON.stringify({
         email: this.state.email,
-        passwordHash: this.state.password
+        password: this.state.password
       }),
       headers: { "Content-Type": "application/json" }
     };
 
     const request = await fetch(
-      // URLHERE,
+      "http://tardis-back.herokuapp.com/auth/sign_in",
       requestData
     );
-    const response = await request.json();
-    const error = response.error;
-    const success = !response.error;
-    if (success) {
+    const response = await request
+    var error = true;
 
+    if (response.success == undefined) {
+      error = false
+      window.sessionStorage.setItem('Access-Token', response.headers.get('Access-Token'))
+      window.sessionStorage.setItem('Client', response.headers.get('Client'))
+      window.sessionStorage.setItem('Uid', response.headers.get('Uid'))
+      window.sessionStorage.setItem('Expiry', response.headers.get('Expiry'))
+    } else {
+      error = true
     }
 
-    if (error) {
-      Swal.fire({
-        title: "Logowanie nieudane",
-        type: "error",
-        text: "Niepoprawny e-mail lub hasło"
-      });
-    } else {
+    if (!error) {
       Swal.fire({
         title: "Zalogowano",
         type: "success",
@@ -83,6 +83,12 @@ export default class LoginPage extends Component {
         if (login.dismiss === Swal.DismissReason.timer) {
           window.location.href = "/";
         }
+      });
+    } else {
+      Swal.fire({
+        title: "Logowanie nieudane",
+        type: "error",
+        text: "Niepoprawny e-mail lub hasło"
       });
     }
   }

@@ -66,7 +66,7 @@ export default class Swiper extends Component {
           showConfirmButton: false,
           timer: 100
         }).then(logout => {
-          if (logout.value) {
+          if (logout.dismiss) {
             this.setState({ render: true })
           }
         });
@@ -76,7 +76,7 @@ export default class Swiper extends Component {
           type: "error",
           text: "Please scan again!"
         }).then(login => {
-          if (login.dismiss === Swal.DismissReason.timer) {
+          if (login.dismiss) {
             window.location.href = "/";
           }
         });
@@ -87,7 +87,7 @@ export default class Swiper extends Component {
         type: "error",
         text: "Please scan again!"
       }).then(login => {
-        if (login.dismiss === Swal.DismissReason.timer) {
+        if (login.dismiss) {
           window.location.href = "/";
         }
       });

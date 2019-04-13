@@ -8,6 +8,7 @@ class FindResultsJob < ApplicationJob
 		req = Net::HTTP::Post.new(uri, {'Authorization' => "Basic MGU5OWIwMGY5MDc1NDE4OTg4ZTgyOTM2YjE3ZmY5YmY6U2hzMnhVNW9tc1B6M2xmTEd0a2lxNHhta3ZqU2JTZmtCV1Nwd2NHVHh2UGF2Mmx6ZUFQQ1l4ZDZ1OXROdFVhZw=="})
 		res = http.request(req)
 		result = JSON.parse(res.body) if res.code == "200"
+		puts "Yelo #{result}"
 
 		allegro = URI.parse("https://api.allegro.pl/offers/listing?phrase=#{barcode.code}&limit=10")
 		http_allegro = Net::HTTP.new(allegro.host, allegro.port)

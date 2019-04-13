@@ -145,7 +145,7 @@ export default class LoginPage extends Component {
           </Row>
         </Container>
 
-      
+
       </div>
     );
   }

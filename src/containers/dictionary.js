@@ -108,7 +108,7 @@ class DictionaryContainer extends Container {
                 timer: 10
             }).then(login => {
                 if (login.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "/";
+                    window.location.href = "/swipe";
                 }
             });
         } else {

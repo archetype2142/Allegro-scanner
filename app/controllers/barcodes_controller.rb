@@ -7,7 +7,7 @@ class BarcodesController < ApplicationController
 
   def index
     email = request.headers["uid"]
-    @barcodes = Barcode.where(user: User.where(email: email).first)
+    @barcodes = Barcode.where(user: User.where(email: email).first).last
     json_response(@barcodes)
   end
 

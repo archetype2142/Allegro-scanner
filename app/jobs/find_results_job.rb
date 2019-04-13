@@ -10,7 +10,7 @@ class FindResultsJob < ApplicationJob
 		result = JSON.parse(res.body) if res.code == "200"
 
 		allegro = URI.parse("https://api.allegro.pl/offers/listing?phrase=#{barcode.code}&limit=10")
-		puts "Yelo: #{barcode}"
+		puts "Yelo: #{barcode.inspect}"
 		http_allegro = Net::HTTP.new(allegro.host, allegro.port)
 		http_allegro.use_ssl = true
 		headers = {

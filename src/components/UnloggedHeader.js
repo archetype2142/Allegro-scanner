@@ -14,7 +14,7 @@ import UnloggedHeaderDropdown from "./UnloggedHeaderDropdown";
 
 export const UnloggedHeader = props => {
   return (
-    <Navbar expand="sm" bg={esteticContainer.getTheme()} variant={esteticContainer.getTheme()}>
+    <Navbar expand="sm" bg={esteticContainer.getTheme()} className="header" variant={esteticContainer.getTheme()}>
       <Navbar.Brand exact to="/" as={Link}>
         OUR APP
       </Navbar.Brand>

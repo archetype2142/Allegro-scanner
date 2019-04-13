@@ -14,11 +14,11 @@ import LoggedHeaderDropdown from "./LoggedHeaderDropdown";
 
 export const LoggedHeader = props => {
     return (
-        <Navbar expand="sm" bg={esteticContainer.getTheme()} variant={esteticContainer.getTheme()}>
+        <Navbar expand="sm" bg={esteticContainer.getTheme()} className="header" variant={esteticContainer.getTheme()}>
             <Navbar.Brand exact to="/" as={Link}>
                 OUR APP
       </Navbar.Brand>
-      
+
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
                 <Nav className="ml-auto" navbar >

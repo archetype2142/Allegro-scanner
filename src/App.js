@@ -55,26 +55,23 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Provider>
-          {this.getProperHeader()}
-          <div className="switch" style={{ backgroundColor: esteticContainer.getColor("background") }}>
-            <Switch >
-              <Route
-                exact
-                path="/"
-                component={LandingPage}
-              />
-              {/* {this.getProperRoute()} */}
-              <Route path="/login" component={LoginPage} />
-              <Route path="/swipe" component={Swiper} />
-              <Route path="/register" component={RegisterPage} />
-              <Route path="/:barcode" component={HandleBarcode} />
-              <Route path="/home" component={LandingPage} />
-              
-            </Switch>
-          </div>
-        </Provider>
+      <div className="switch" style={{ backgroundColor: esteticContainer.getColor("background") }}>        <Provider>
+        {this.getProperHeader()}
+        <Switch >
+          <Route
+            exact
+            path="/"
+            component={LandingPage}
+          />
+          {/* {this.getProperRoute()} */}
+          <Route path="/login" component={LoginPage} />
+          <Route path="/swipe" component={Swiper} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/:barcode" component={HandleBarcode} />
+          <Route path="/home" component={LandingPage} />
+
+        </Switch>
+      </Provider>
       </div >
     );
   }

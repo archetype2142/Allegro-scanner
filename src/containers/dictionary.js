@@ -105,7 +105,7 @@ class DictionaryContainer extends Container {
                 title: "Success!",
                 type: "success",
                 showConfirmButton: false,
-                timer: 10
+                timer: 100
             }).then(login => {
                 if (login.dismiss === Swal.DismissReason.timer) {
                     window.location.href = "/swipe";
@@ -115,7 +115,13 @@ class DictionaryContainer extends Container {
             Swal.fire({
                 title: "Failure",
                 type: "error",
-                text: "Bad fetch"
+                text: "Bad fetch",
+                showConfirmButton: false,
+                timer: 100
+            }).then(login => {
+                if (login.dismiss === Swal.DismissReason.timer) {
+                    window.location.href = "/";
+                }
             });
         }
     }

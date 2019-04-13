@@ -141,11 +141,7 @@ export default class RegisterPage extends Component {
         type: "success",
         text: "Konto stworzone"
       }).then(register => {
-        if (window.sessionStorage.getItem("bolidLevel") === "0") {
-          window.location.href = "/";
-        } else if (window.sessionStorage.getItem("bolidLevel") === "1") {
-          window.location.href = "/";
-        }
+        window.location.href = "/";
       });
     } else {
       Swal.fire({

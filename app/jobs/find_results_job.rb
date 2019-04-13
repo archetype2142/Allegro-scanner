@@ -32,7 +32,7 @@ class FindResultsJob < ApplicationJob
 					)
 				added += 1
 			end
-		else
+		elsif result_allegro['items']['regular'].count > 2
 			result_allegro['items']['regular'].each do |item|
 				result_allegro['items']['regular'].each do |item|
 					image = item['images'].first['url'] if item['images'].first['url']
@@ -45,6 +45,8 @@ class FindResultsJob < ApplicationJob
 					added += 1
 				end
 			end 
+		else 
+			
 		end
 
 		# if added < 10

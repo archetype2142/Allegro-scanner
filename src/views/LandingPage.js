@@ -19,7 +19,7 @@ export default class LandingPage extends Component {
                     <Row style={{ padding: '2vh 10vw' }}>
                         <Col xs={12} md={4} className='alignCenter'>
                             <h1 style={{ paddingBottom: '2vh' }} className='small-font'>Access trustworthy reviews and product details with no hustle</h1>
-                            <Button onClick={() => { window.location.href = "/scanner" }} style={{ fontWeight: 'bold', backgroundColor: '#6c62fc', border: '#6c62fc' }}>Start scanning</Button>
+                            <Button onClick={() => { window.location.href = "https://tardis-back.herokuapp.com/scanner" }} style={{ fontWeight: 'bold', backgroundColor: '#6c62fc', border: '#6c62fc' }}>Start scanning</Button>
                         </Col>
                         <Col xs={12} md={8}>
                             <img src={Background} style={{ width: '100%' }} />

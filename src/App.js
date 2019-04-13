@@ -32,23 +32,6 @@ class App extends Component {
     }
   }
 
-  getProperRoute() {
-    if (!this.isLoggedIn()) {
-      return (
-        <Route
-          exact
-          path="/"
-          href={window.location.href = "https://tardis-back.herokuapp.com/scanner"}
-        />)
-    } else {
-      return (
-        <Route
-          exact
-          path="/"
-          component={LandingPage}
-        />)
-    }
-  }
 
   getProperHeader() {
     if (this.isLoggedIn()) {
@@ -83,7 +66,6 @@ class App extends Component {
               {/* {this.getProperRoute()} */}
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
-              <Route path="/scanner" href={window.location.href = "https://tardis-back.herokuapp.com/scanner"} />
               <Route path="/:barcode" component={HandleBarcode} />
               <Route path="/home" component={LandingPage} />
             </Switch>

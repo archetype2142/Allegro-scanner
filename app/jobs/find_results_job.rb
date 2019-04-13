@@ -22,20 +22,9 @@ class FindResultsJob < ApplicationJob
 		result_allegro = JSON.parse(res_allegro.body)
 		puts res_allegro
 		added = 0
-		if result_allegro['items']['promoted'].count != 0
-			result_allegro['items']['promoted'].each do |item|
-				image = item['images'].first['url'] if item['images'].first['url']
-				Result.create(
-					name: item['name'], 
-					image: image,
-					price: item['delivery']['lowestPrice']['amount'],
-					barcode: barcode
-					)
-				added += 1
-			end
-		elsif result_allegro['items']['regular'].count != 0
-			result_allegro['items']['regular'].each do |item|
-				result_allegro['items']['regular'].each do |item|
+		if added < 10
+			if result_allegro['items']['promoted'].count != 0
+				result_allegro['items']['promoted'].each do |item|
 					image = item['images'].first['url'] if item['images'].first['url']
 					Result.create(
 						name: item['name'], 
@@ -45,9 +34,21 @@ class FindResultsJob < ApplicationJob
 						)
 					added += 1
 				end
-			end 
-		else 
-
+			elsif result_allegro['items']['regular'].count != 0
+				result_allegro['items']['regular'].each do |item|
+					result_allegro['items']['regular'].each do |item|
+						image = item['images'].first['url'] if item['images'].first['url']
+						Result.create(
+							name: item['name'], 
+							image: image,
+							price: item['delivery']['lowestPrice']['amount'],
+							barcode: barcode
+							)
+						added += 1
+					end
+				end 
+			else 
+			end
 		end
 
 		# if added < 10

@@ -6,12 +6,16 @@ Rails.application.routes.draw do
 	
 	get '/allegro', to: 'allegro#index'
   # get '/categories', to: 'category#index'
- 	resources :barcodes
-  	resources :barcode_no_logins
+ 	resources :barcodes do 
+      post :get_barcode, on: :collection
+ 		resources :results
+ 	end
+  
+  resources :barcode_no_logins
   # resources :groups do 
   	# resources :events
   	# resources :posts
   	# resources :categories
   # end
-  root 'barcodes#index', as: :authenticated_root
+  get '/bar', to: 'barcodes#bar'
 end

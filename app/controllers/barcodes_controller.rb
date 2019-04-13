@@ -1,55 +1,34 @@
 class BarcodesController < ApplicationController
-  before_action :set_barcode, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :set_barcode, only: [:destroy]
+  # before_action :authenticate_user!
 
-  # GET /barcodes
-  # GET /barcodes.json
+  require "uri"
+  require "net/http"
+
   def index
     email = request.headers["uid"]
-    @barcodes = User.where(email: email).first.barcodes
+    @barcodes = Barcode.where(user: User.where(email: email).first)
+    json_response(@barcodes)
   end
 
-  # GET /barcodes/1
-  # GET /barcodes/1.json
-  def show
-  end
-
-  # GET /barcodes/new
   def new
     @barcode = Barcode.new
   end
 
-  # GET /barcodes/1/edit
-  def edit; end
+  def edit
+  end
 
-  # POST /barcodes
-  # POST /barcodes.json
   def create
     @barcode = Barcode.new(barcode_params)
     email = request.headers["uid"]
     @barcode.update_attributes(user: User.where(email: email).first)
-    
+    # get_result(params["code"], get_tokens["access-token"], get_tokens["jti"])
+
     respond_to do |format|
       if @barcode.save
-
-        format.html { redirect_to @barcode, notice: 'Barcode was successfully created.' }
-        format.json { render :show, status: :created, location: @barcode }
+        FindResultsJob.perform_later @barcode
+        format.json { json_response(@barcode) }
       else
-        format.html { render :new }
-        format.json { render json: @barcode.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /barcodes/1
-  # PATCH/PUT /barcodes/1.json
-  def update
-    respond_to do |format|
-      if @barcode.update(barcode_params)
-        format.html { redirect_to @barcode, notice: 'Barcode was successfully updated.' }
-        format.json { render :show, status: :ok, location: @barcode }
-      else
-        format.html { render :edit }
         format.json { render json: @barcode.errors, status: :unprocessable_entity }
       end
     end
@@ -65,6 +44,10 @@ class BarcodesController < ApplicationController
     end
   end
 
+  def get_barcode
+    json_response(params[:upc])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_barcode
@@ -73,6 +56,6 @@ class BarcodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def barcode_params
-      params.permit(:code)
+      params.permit(:code, :upc)
     end
 end

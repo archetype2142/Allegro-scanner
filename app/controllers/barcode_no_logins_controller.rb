@@ -1,6 +1,4 @@
 class BarcodeNoLoginsController < ApplicationController
-  before_action :set_barcode_no_login, only: [:show, :edit, :update, :destroy]
-
   # POST /barcode_no_logins
   # POST /barcode_no_logins.json
   def create
@@ -18,13 +16,7 @@ class BarcodeNoLoginsController < ApplicationController
   end
 
   
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_barcode_no_login
-      @barcode_no_login = BarcodeNoLogin.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+  private  
     def barcode_no_login_params
       params.permit(:code)
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_211327) do
+ActiveRecord::Schema.define(version: 2019_04_13_010924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 2019_04_12_211327) do
     t.bigint "user_id"
     t.string "name"
     t.index ["user_id"], name: "index_barcodes_on_user_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "barcode_id"
+    t.string "name"
+    t.string "image"
+    t.string "description"
+    t.float "price"
+    t.index ["barcode_id"], name: "index_results_on_barcode_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,4 +67,5 @@ ActiveRecord::Schema.define(version: 2019_04_12_211327) do
   end
 
   add_foreign_key "barcodes", "users"
+  add_foreign_key "results", "barcodes"
 end

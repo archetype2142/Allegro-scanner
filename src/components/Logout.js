@@ -47,7 +47,9 @@ export default class Logout extends Component {
                     this.cookies.remove("Client");
                     this.cookies.remove("Uid");
                     this.cookies.remove("Expiry");
-                    window.location.href = "/";
+                    if (this.cookies.get("Access-Token") === null) {
+                        window.location.href = "/";
+                    }
                 }
             });
         } else {

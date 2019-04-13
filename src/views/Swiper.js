@@ -64,6 +64,7 @@ export default class Swiper extends Component {
           title: "Success!",
           type: "success",
           showConfirmButton: false,
+          timer: 100
         }).then(logout => {
           if (logout.value) {
             this.setState({ render: true })

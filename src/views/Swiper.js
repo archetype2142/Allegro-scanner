@@ -62,7 +62,8 @@ export default class Swiper extends Component {
       if (response[0].id) {
         Swal.fire({
           title: "Success!",
-          type: "success"
+          type: "success",
+          showConfirmButton: false,
         }).then(logout => {
           if (logout.value) {
             this.setState({ render: true })
@@ -72,15 +73,15 @@ export default class Swiper extends Component {
         Swal.fire({
           title: "No Item",
           type: "error",
-          text: "There is no such item :("
-        });
+          text: "Please scan again!"
+        }).then(a => { window.location.href = "/" })
       }
     } else {
       Swal.fire({
         title: "No Item",
         type: "error",
-        text: "There is no such item :("
-    });
+        text: "Please scan again!"
+      }).then(a => { window.location.href = "/" })
     }
   }
 

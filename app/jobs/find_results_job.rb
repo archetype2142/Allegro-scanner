@@ -19,7 +19,7 @@ class FindResultsJob < ApplicationJob
 		req_allegro = Net::HTTP::Get.new(allegro, headers)
 		res_allegro = http_allegro.request(req_allegro)
 		result_allegro = JSON.parse(res_allegro.body)
-
+		puts res_allegro
 		added = 0
 		if result_allegro['items']['promoted'].count > 2
 			result_allegro['items']['promoted'].each do |item|
@@ -46,7 +46,7 @@ class FindResultsJob < ApplicationJob
 				end
 			end 
 		else 
-			
+
 		end
 
 		# if added < 10

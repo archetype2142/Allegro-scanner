@@ -16,10 +16,8 @@ export const UnloggedHeader = props => {
   return (
     <Navbar expand="sm" bg={esteticContainer.getTheme()} className="header" variant={esteticContainer.getTheme()}>
       <Navbar.Brand exact to="/" as={Link}>
-        OUR APP
+        SCAN.LEE
       </Navbar.Brand>
-
-      <Nav.Link href="/swipe">Swiper</Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse>
         <Nav className="ml-auto" navbar >

@@ -16,9 +16,10 @@ export const LoggedHeader = props => {
     return (
         <Navbar expand="sm" bg={esteticContainer.getTheme()} className="header" variant={esteticContainer.getTheme()}>
             <Navbar.Brand exact to="/" as={Link}>
-                OUR APP
+            SCAN.LEE
       </Navbar.Brand>
-
+            <Nav><Nav.Link href="/swipe">Swiper</Nav.Link>
+            <Nav.Link href={()=>{ window.location.href = "https://tardis-back.herokuapp.com/scanner" }}>Scan</Nav.Link></Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
                 <Nav className="ml-auto" navbar >

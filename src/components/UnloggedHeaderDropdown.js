@@ -13,6 +13,9 @@ export default class UnloggedHeaderDropdown extends Component {
         <NavDropdown.Item href="/register">
           {dictionaryContainer.getText("header", "register")}
         </NavDropdown.Item>
+        <NavDropdown.Item href="/loginn">
+          {dictionaryContainer.getText("header", "/loginn")}
+        </NavDropdown.Item>
         <NavDropdown.Divider />
         <NavDropdown.Item href="/">{dictionaryContainer.getText("header", "mainPage")}</NavDropdown.Item>
       </NavDropdown>

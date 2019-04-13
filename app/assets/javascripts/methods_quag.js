@@ -24,15 +24,15 @@ function load_quagga(){
           code = order_by_occurrence(last_result)[0];
           last_result = [];
           Quagga.stop();
-          $.ajax({
-            type: "POST",
-            headers: {
-              'uid':'szeryf@bolid.pl',
-            },
-            url: '/barcodes.json',
-            data: { code: code }
-          });
-          window.location.replace("https://tardis-back.herokuapp.com/bar");
+          // $.ajax({
+          //   type: "POST",
+            // headers: {
+            //   'uid':'szeryf@bolid.pl',
+            // },
+          //   url: 'http://192.168.43.233:3000/scanner/' + code,
+          // });
+          window.location.replace('http://192.168.43.233:3000/' + code);
+          // window.location.replace("http://192.168.43.233:3000");
         }
       });
     }

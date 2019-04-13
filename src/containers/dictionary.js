@@ -105,7 +105,7 @@ class DictionaryContainer extends Container {
                 title: "Success!",
                 type: "success",
                 showConfirmButton: false,
-                timer: 100
+                timer: 1
             }).then(smthn => { window.location.href = "/swipe"; })
         } else {
             Swal.fire({

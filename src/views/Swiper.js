@@ -129,10 +129,9 @@ export default class Swiper extends Component {
                     <Card.Body>
                       <Card.Title className="text-left">{val.name}</Card.Title>
                       <ListGroup className="list-group-flush">
-                        <ListGroupItem className="text-left"><i className="fa fa-star"></i>Cras justo odio</ListGroupItem>
-                        <ListGroupItem className="text-left">Dapibus ac facilisis in</ListGroupItem>
-                        <ListGroupItem className="text-left">Some quick example text to build on the card title and make up the bulk of
-                                  the card's content.</ListGroupItem>
+                        <ListGroupItem className="text-left">Highest Rated Product in this Category | Seller: architect2142</ListGroupItem>
+                        <ListGroupItem className="text-left">{'<<<< Description Comes Here >>>>'}</ListGroupItem>
+                        <ListGroupItem className="text-left">ere6556: That product blew my mind</ListGroupItem>
                       </ListGroup>
                       <Card.Text>
 

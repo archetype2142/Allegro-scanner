@@ -12,6 +12,7 @@ class FindResultsJob < ApplicationJob
 		allegro = URI.parse("https://api.allegro.pl/offers/listing?phrase=#{barcode.code}&limit=10")
 		http_allegro = Net::HTTP.new(allegro.host, allegro.port)
 		http_allegro.use_ssl = true
+		puts result['access_token']
 		headers = {
 			'Authorization' => "Bearer #{result['access_token']}",
 			'Accept' => 'application/vnd.allegro.public.v1+json'

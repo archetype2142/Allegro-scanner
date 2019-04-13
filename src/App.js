@@ -75,7 +75,12 @@ class App extends Component {
           {this.getProperHeader()}
           <div className="switch" style={{ backgroundColor: esteticContainer.getColor("background") }}>
             <Switch >
-              {this.getProperRoute()}
+              <Route
+                exact
+                path="/"
+                component={LandingPage}
+              />
+              {/* {this.getProperRoute()} */}
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
               <Route path="/scanner" href={window.location.href = "https://tardis-back.herokuapp.com/scanner"} />

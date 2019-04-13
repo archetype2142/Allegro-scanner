@@ -38,7 +38,6 @@ export default class HandleBarcode extends Component {
         )
         const response = await request.json();
         console.log(response.code);
-        window.location.href = "/home"
     }
     render() {
         return (

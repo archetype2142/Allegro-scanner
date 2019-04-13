@@ -44,6 +44,9 @@ export default class Logout extends Component {
             }).then(logout => {
                 if (logout.value) {
                     this.cookies.remove("Access-Token");
+                    this.cookies.remove("Client");
+                    this.cookies.remove("Uid");
+                    this.cookies.remove("Expiry");
                     if (this.cookies.get("Access-Token") === null) {
                         window.location.href = "/";
                     }

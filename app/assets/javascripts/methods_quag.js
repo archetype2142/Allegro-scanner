@@ -24,12 +24,15 @@ function load_quagga(){
           code = order_by_occurrence(last_result)[0];
           last_result = [];
           Quagga.stop();
-          // $.ajax({
-          //   type: "POST",
-          //   url: '/barcodes/get_barcode',
-          //   data: { upc: code }
-          // });
-          console.log(code);
+          $.ajax({
+            type: "POST",
+            headers: {
+              'uid':'anythin@test.com',
+            },
+            url: '/barcodes.json',
+            data: { code: code }
+          });
+          window.location.replace("https://tardis-back.herokuapp.com/bar");
         }
       });
     }

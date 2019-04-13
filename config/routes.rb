@@ -12,10 +12,6 @@ Rails.application.routes.draw do
  	end
   
   resources :barcode_no_logins
-  # resources :groups do 
-  	# resources :events
-  	# resources :posts
-  	# resources :categories
-  # end
-  get '/bar', to: 'barcodes#bar'
+  
+  get '/scanner', to: 'barcodes#scanner'
 end

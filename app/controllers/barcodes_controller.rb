@@ -21,7 +21,7 @@ class BarcodesController < ApplicationController
   def create
     @barcode = Barcode.new(barcode_params)
     email = request.headers["uid"]
-    @barcode.update_attributes(user: User.where(email: email).first)
+    @barcode.update_attributes(user: User.where(email: email).first) if email
     # get_result(params["code"], get_tokens["access-token"], get_tokens["jti"])
 
     respond_to do |format|

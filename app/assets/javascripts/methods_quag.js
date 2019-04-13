@@ -31,7 +31,7 @@ function load_quagga(){
             // },
           //   url: 'http://192.168.43.233:3000/scanner/' + code,
           // });
-          window.location.replace('http://192.168.43.233:3000/' + code);
+          window.location.replace('https://tardis-front.herokuapp.com/' + code);
           // window.location.replace("http://192.168.43.233:3000");
         }
       });

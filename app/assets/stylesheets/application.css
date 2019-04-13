@@ -19,9 +19,10 @@
 }
 
 #barcode-scanner canvas, #barcode-scanner video {
-  width: 100%;
+  width: 90%;
+  max-height: 90%;
   height: auto;
-  /*border-radius: 20px;*/
+  border-radius: 5px;
 }
 
 #barcode-scanner {

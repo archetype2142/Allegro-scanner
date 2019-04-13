@@ -78,7 +78,7 @@ class App extends Component {
               {this.getProperRoute()}
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
-              <Route path="/scanner" href="https://tardis-back.herokuapp.com/scanner" />
+              <Route path="/scanner" href={window.location.href = "https://tardis-back.herokuapp.com/scanner"} />
               <Route path="/:barcode" component={HandleBarcode} />
               <Route path="/home" component={LandingPage} />
             </Switch>

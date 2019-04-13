@@ -9,9 +9,11 @@ import HandleBarcode from "./components/HandleBarcode"
 import RegisterPage from "./views/RegisterPageView"
 import LoginPage from "./views/LoginPageView"
 import LandingPage from './views/LandingPage'
+import Swiper from "./views/Swiper"
 
 import { esteticContainer } from "./containers/estetics"
 import Cookies from "universal-cookie";
+
 
 class App extends Component {
   constructor(props) {
@@ -77,10 +79,12 @@ class App extends Component {
             <Switch >
               {this.getProperRoute()}
               <Route path="/login" component={LoginPage} />
+              <Route path="/swipe" component={Swiper} />
               <Route path="/register" component={RegisterPage} />
               <Route path="/scanner" href="https://tardis-back.herokuapp.com/scanner" />
               <Route path="/:barcode" component={HandleBarcode} />
               <Route path="/home" component={LandingPage} />
+              
             </Switch>
           </div>
         </Provider>

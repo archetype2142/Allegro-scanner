@@ -61,7 +61,7 @@ class EsteticContainer extends Container {
 
     setTheme(bool) {
         console.log("getTheme")
-        if (bool == false) {
+        if (bool === false) {
             this.cookies.set('theme', 'dark')
             this.setState({ theme: 'dark' })
         } else {

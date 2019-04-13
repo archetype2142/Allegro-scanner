@@ -18,6 +18,7 @@ export const LoggedHeader = props => {
             <Navbar.Brand exact to="/" as={Link}>
                 OUR APP
       </Navbar.Brand>
+      
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
                 <Nav className="ml-auto" navbar >

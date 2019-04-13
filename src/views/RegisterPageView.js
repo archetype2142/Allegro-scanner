@@ -12,7 +12,7 @@ import {
   Popover
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Subscribe } from "unstated";
+// import { Subscribe } from "unstated";
 import Swal from "sweetalert2";
 import { dictionaryContainer } from "../containers/dictionary";
 

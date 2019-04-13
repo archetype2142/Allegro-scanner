@@ -70,7 +70,7 @@ export default class LoginPage extends Component {
 
     var error = true;
 
-    if (response.success == undefined) {
+    if (response.success === undefined) {
       error = false
     } else {
       error = true
@@ -144,6 +144,8 @@ export default class LoginPage extends Component {
             <Col />
           </Row>
         </Container>
+
+      
       </div>
     );
   }

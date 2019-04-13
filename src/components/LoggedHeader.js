@@ -19,7 +19,7 @@ export const LoggedHeader = props => {
             SCAN.LEE
       </Navbar.Brand>
             <Nav><Nav.Link href="/swipe">Swiper</Nav.Link>
-            <Nav.Link href={()=>{ window.location.href = "https://tardis-back.herokuapp.com/scanner" }}>Scan</Nav.Link></Nav>
+            <Nav.Link >Scan</Nav.Link></Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
                 <Nav className="ml-auto" navbar >
@@ -33,5 +33,3 @@ export const LoggedHeader = props => {
         </Navbar>
     );
 }
-
-//

@@ -14,9 +14,8 @@ export default class HandleBarcode extends Component {
     }
 
     componentDidMount() {
-        const { barcode } = this.props.match.params
-        window.sessionStorage.setItem('barcode', barcode)
-        console.log(barcode)
+        window.sessionStorage.setItem('barcode', windows.location.pathname)
+        console.log(windows.location.pathname)
     }
     async fetchData() {
         var token = this.cookies.get('Access-Token')
@@ -28,7 +27,7 @@ export default class HandleBarcode extends Component {
             method: "POST",
             headers: { 'Access-Token': token, 'Client': client, 'Uid': uid, 'Expiry': expiry },
             body: JSON.stringify({
-                code: window.sessionStorage.getItem('barcode')
+                code: windows.location.pathname
             }),
         };
         console.log(requestData)

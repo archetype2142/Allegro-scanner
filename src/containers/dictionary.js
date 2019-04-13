@@ -1,6 +1,7 @@
 import { Container } from 'unstated'
 
 import Cookies from 'universal-cookie';
+import Swal from 'sweetalert2';
 
 class DictionaryContainer extends Container {
     state = {
@@ -69,6 +70,14 @@ class DictionaryContainer extends Container {
     }
 
     async setLocation(location) {
+        Swal.fire({
+            title: "Processing...",
+            showCancelButton: false,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+                Swal.showLoading();
+            }
+        });
         await window.sessionStorage.setItem("location", location.slice(1))
         console.log(location.slice(1))
         var token = this.cookies.get('Access-Token')
@@ -89,11 +98,26 @@ class DictionaryContainer extends Container {
             requestData
         )
         const response = await request.json();
+        console.log(response)
+
+        if (response.code) {
+            Swal.fire({
+                title: "Success!",
+                type: "success",
+                showConfirmButton: false,
+                timer: 1000
+            }).then(login => {
+                if (login.dismiss === Swal.DismissReason.timer) {
+                    window.location.href = "/";
+                }
+            });
+        } else {
+            Swal.fire({
+                title: "Failure",
+                type: "error",
+                text: "Bad fetch"
+            });
+        }
     }
-
-    async fetchData() {
-
-    }
-
 }
 export const dictionaryContainer = new DictionaryContainer()

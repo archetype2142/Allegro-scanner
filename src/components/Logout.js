@@ -31,7 +31,7 @@ export default class Logout extends Component {
             headers: { 'Access-Token': token, 'Client': client, 'Uid': uid, 'Expiry': expiry }
         };
         const request = await fetch(
-            "http://tardis-back.herokuapp.com/auth/sign_out",
+            "https://tardis-back.herokuapp.com/auth/sign_out",
             requestData
         );
         const response = await request.json();

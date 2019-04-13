@@ -59,7 +59,7 @@ export default class LoginPage extends Component {
     };
 
     const request = await fetch(
-      "http://tardis-back.herokuapp.com/auth/sign_in",
+      "https://tardis-back.herokuapp.com/auth/sign_in",
       requestData
     );
     const response = await request

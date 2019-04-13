@@ -122,7 +122,7 @@ export default class RegisterPage extends Component {
       headers: { "Content-Type": "application/json" }
     };
     const request = await fetch(
-      "http://tardis-back.herokuapp.com/auth",
+      "https://tardis-back.herokuapp.com/auth",
       requestData
     );
     const response = await request.json();

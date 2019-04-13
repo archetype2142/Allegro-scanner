@@ -68,5 +68,32 @@ class DictionaryContainer extends Container {
         return this.state[this.getLanguage()][origin][variant]
     }
 
+    async setLocation(location) {
+        await window.sessionStorage.setItem("location", location.slice(1))
+        console.log(location.slice(1))
+        var token = this.cookies.get('Access-Token')
+        var client = this.cookies.get('Client')
+        var uid = this.cookies.get('Uid')
+        var expiry = this.cookies.get('Expiry')
+        var code = location.slice(1)
+        console.log(code)
+
+        const requestData = {
+            method: "POST",
+            headers: { "Content-Type": "application/json", 'Access-Token': token, 'Client': client, 'Uid': uid, 'Expiry': expiry },
+            body: JSON.stringify({ code: code })
+        };
+        console.log(requestData)
+        const request = await fetch(
+            "https://tardis-back.herokuapp.com/barcodes",
+            requestData
+        )
+        const response = await request.json();
+    }
+
+    async fetchData() {
+
+    }
+
 }
 export const dictionaryContainer = new DictionaryContainer()

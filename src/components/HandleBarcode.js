@@ -5,47 +5,16 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Background from '../resources/header-img.png'
 import Cookies from "universal-cookie";
+import { dictionaryContainer } from "../containers/dictionary";
 
 export default class HandleBarcode extends Component {
     constructor(props) {
         super(props);
-        this.cookies = new Cookies()
-        this.fetchData = this.fetchData.bind(this)
     }
 
-    componentDidMount() {
-        window.sessionStorage.setItem('barcode', window.location.pathname)
-        console.log(window.location.pathname)
-    }
-    async fetchData() {
-        var token = this.cookies.get('Access-Token')
-        var client = this.cookies.get('Client')
-        var uid = this.cookies.get('Uid')
-        var expiry = this.cookies.get('Expiry')
-
-        const requestData = {
-            method: "POST",
-            headers: { 'Access-Token': token, 'Client': client, 'Uid': uid, 'Expiry': expiry },
-            body: JSON.stringify({
-                code: window.location.pathname
-            }),
-        };
-        console.log(requestData)
-        const request = await fetch(
-            "https://tardis-back.herokuapp.com/barcodes",
-            requestData
-        )
-        const response = await request.json();
-        console.log(await response.code);
-        window.location.href = "/"
-    }
     render() {
-        return (
-            <div>
-                {this.fetchData()}
-                qwertyuiopjhgfdsdfghjk
-            </div>
-        );
+        { dictionaryContainer.setLocation(window.location.pathname) }
+        return false
     }
 }
 

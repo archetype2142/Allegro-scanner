@@ -8,7 +8,8 @@ import Background from '../resources/header-img.png'
 export default class LandingPage extends Component {
     constructor() {
         super()
-
+        
+        console.log(window.location.href)
     }
 
 

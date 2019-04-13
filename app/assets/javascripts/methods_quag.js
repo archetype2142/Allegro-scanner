@@ -27,7 +27,7 @@ function load_quagga(){
           $.ajax({
             type: "POST",
             headers: {
-              'uid':'anythin@test.com',
+              'uid':'szeryf@bolid.pl',
             },
             url: '/barcodes.json',
             data: { code: code }

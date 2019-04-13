@@ -105,10 +105,10 @@ class DictionaryContainer extends Container {
                 title: "Success!",
                 type: "success",
                 showConfirmButton: false,
-                timer: 100
+                timer: 200
             }).then(login => {
                 if (login.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "/";
+                    window.location.href = "/swipe";
                 }
             });
         } else {

@@ -15,7 +15,7 @@ export default class HandleBarcode extends Component {
     render() {
         return (
             <div>
-                <script>{async () => {
+                {/* <script>{async () => {
                     var token = this.cookies.get('Access-Token')
                     var client = this.cookies.get('Client')
                     var uid = this.cookies.get('Uid')
@@ -34,7 +34,8 @@ export default class HandleBarcode extends Component {
                     )
                     const response = await request.json();
                     console.log(response.code);
-                }}</script>
+                }}</script> */}
+                qwertyuiopjhgfdsdfghjk
             </div>
         );
     }

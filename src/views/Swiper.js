@@ -72,17 +72,25 @@ export default class Swiper extends Component {
         });
       } else {
         Swal.fire({
-          title: "No Item",
+          title: "Failure!",
           type: "error",
           text: "Please scan again!"
-        }).then(a => { window.location.href = "/" })
+        }).then(login => {
+          if (login.dismiss === Swal.DismissReason.timer) {
+            window.location.href = "/";
+          }
+        });
       }
     } else {
       Swal.fire({
-        title: "No Item",
+        title: "Failure!",
         type: "error",
         text: "Please scan again!"
-      }).then(a => { window.location.href = "/" })
+      }).then(login => {
+        if (login.dismiss === Swal.DismissReason.timer) {
+          window.location.href = "/";
+        }
+      });
     }
   }
 

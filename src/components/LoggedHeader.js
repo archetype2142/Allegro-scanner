@@ -19,7 +19,6 @@ export const LoggedHeader = props => {
                 OUR APP
       </Navbar.Brand>
 
-            <Nav><Nav.Link href="/swipe">Swiper</Nav.Link></Nav>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>
                 <Nav className="ml-auto" navbar >

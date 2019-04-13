@@ -18,6 +18,8 @@ export const UnloggedHeader = props => {
       <Navbar.Brand exact to="/" as={Link}>
         OUR APP
       </Navbar.Brand>
+
+      <Nav.Link href="/swipe">Swiper</Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse>
         <Nav className="ml-auto" navbar >

@@ -36,18 +36,29 @@ export default class Logout extends Component {
         );
         const response = await request.json();
         console.log(response.success);
-        Swal.fire({
-            title: "Wylogowano",
-            type: "success"
-        }).then(logout => {
-            if (logout.value) {
-                this.cookies.remove("Access-Token");
-                this.cookies.remove("Client");
-                this.cookies.remove("Uid");
-                this.cookies.remove("Expiry");
-                window.location.href = "/";
-            }
-        });
+
+        if (response.success === true) {
+            Swal.fire({
+                title: "Wylogowano",
+                type: "success"
+            }).then(logout => {
+                if (logout.value) {
+                    this.cookies.remove("Access-Token");
+                    this.cookies.remove("Client");
+                    this.cookies.remove("Uid");
+                    this.cookies.remove("Expiry");
+                    if (this.cookies.get("Access-Token") === null) {
+                        window.location.href = "/";
+                    }
+                }
+            });
+        } else {
+            Swal.fire({
+                title: "Błąd wylogowywania",
+                type: "error",
+                text: "Prosimy spróbować ponownie"
+            });
+        }
     }
 
     Logout() {

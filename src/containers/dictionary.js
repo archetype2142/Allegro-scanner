@@ -105,18 +105,15 @@ class DictionaryContainer extends Container {
                 title: "Success!",
                 type: "success",
                 showConfirmButton: false,
-                timer: 1000
-            }).then(login => {
-                if (login.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "/";
-                }
-            });
+                timer: 100
+            }).then(smthn => { window.location.href = "/swipe"; })
         } else {
             Swal.fire({
-                title: "Failure",
+                title: "Bad Request",
                 type: "error",
-                text: "Bad fetch"
-            });
+                text: "Sorry try again :(",
+                timer: 1000
+            })
         }
     }
 }

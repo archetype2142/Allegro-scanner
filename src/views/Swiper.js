@@ -70,17 +70,17 @@ export default class Swiper extends Component {
         });
       } else {
         Swal.fire({
-          title: "Failure!",
+          title: "No Item",
           type: "error",
-          text: "Please try again :("
+          text: "There is no such item :("
         });
       }
     } else {
       Swal.fire({
-        title: "Failure!",
+        title: "No Item",
         type: "error",
-        text: "Please try again :("
-      });
+        text: "There is no such item :("
+    });
     }
   }
 
@@ -127,7 +127,7 @@ export default class Swiper extends Component {
                       <Card.Text>
 
                       </Card.Text>
-                      <Button variant="info" disabled>{this.getValue(val.price)+ " PLN"}</Button>
+                      <Button variant="info" disabled>{this.getValue(val.price) + " PLN"}</Button>
                     </Card.Body>
                   </Card>
                 </center>

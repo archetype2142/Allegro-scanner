@@ -19,7 +19,6 @@ class BarcodesController < ApplicationController
   end
 
   def create
-    puts "Here are params #{params}, heres code: #{params[:code]}"
     @barcode = Barcode.new(barcode_params)
     email = request.headers["uid"]
     @barcode.update_attributes(user: User.where(email: email).first) if email

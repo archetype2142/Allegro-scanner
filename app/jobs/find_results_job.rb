@@ -31,7 +31,7 @@ class FindResultsJob < ApplicationJob
 						image: image,
 						price: item['delivery']['lowestPrice']['amount'],
 						barcode: barcode
-						)
+					) if added < 10
 					added += 1
 				end
 			elsif result_allegro['items']['regular'].count != 0
@@ -43,7 +43,7 @@ class FindResultsJob < ApplicationJob
 							image: image,
 							price: item['delivery']['lowestPrice']['amount'],
 							barcode: barcode
-							)
+						) if added < 10
 						added += 1
 					end
 				end 

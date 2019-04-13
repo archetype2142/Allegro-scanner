@@ -2,17 +2,16 @@ import React, { Component } from "react";
 import { Provider } from "unstated";
 import { Switch, Route } from "react-router-dom";
 // import { anyContainer } from "./containers/any";
-<<<<<<< HEAD
 import { UnloggedHeader } from "./components/UnloggedHeader"
 import { LoggedHeader } from "./components/LoggedHeader"
+import HandleBarcode from "./components/HandleBarcode"
 
 import RegisterPage from "./views/RegisterPageView"
 import LoginPage from "./views/LoginPageView"
-=======
 import LandingPage from './views/LandingPage'
->>>>>>> frontend/ux
 
 import { esteticContainer } from "./containers/estetics"
+import Cookies from "universal-cookie";
 
 class App extends Component {
   constructor(props) {
@@ -21,14 +20,33 @@ class App extends Component {
       refresh: true,
       isLoggedIn: true
     };
+    this.cookies = new Cookies()
 
   }
 
   isLoggedIn() {
-    if (window.sessionStorage.getItem('Access-Token')) {
+    if (this.cookies.get('Access-Token')) {
       return false
     } else {
       return true
+    }
+  }
+
+  getProperRoute() {
+    if (!this.isLoggedIn()) {
+      return (
+        <Route
+          exact
+          path="/"
+          href={window.location.href = "https://tardis-back.herokuapp.com/scanner"}
+        />)
+    } else {
+      return (
+        <Route
+          exact
+          path="/"
+          component={LandingPage}
+        />)
     }
   }
 
@@ -57,13 +75,12 @@ class App extends Component {
           {this.getProperHeader()}
           <div className="switch" style={{ backgroundColor: esteticContainer.getColor("background") }}>
             <Switch >
-              <Route
-                exact
-                path="/"
-                component={this.isLoggedIn() ? LandingPage : LoginPage}
-              />
+              {this.getProperRoute()}
               <Route path="/login" component={LoginPage} />
               <Route path="/register" component={RegisterPage} />
+              <Route path="/scanner" href="https://tardis-back.herokuapp.com/scanner" />
+              <Route path="/:barcode" component={HandleBarcode} />
+              <Route path="/home" component={LandingPage} />
             </Switch>
           </div>
         </Provider>

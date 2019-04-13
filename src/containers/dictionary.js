@@ -6,7 +6,7 @@ class DictionaryContainer extends Container {
     state = {
         Polski: {
             header: {
-                login: "Zalogowanie",
+                login: "Logowanie",
                 register: "Rejestracja",
                 mainPage: "Strona Główna",
                 logout: "Wyloguj się"
@@ -67,5 +67,6 @@ class DictionaryContainer extends Container {
     getText(origin, variant) {
         return this.state[this.getLanguage()][origin][variant]
     }
+
 }
 export const dictionaryContainer = new DictionaryContainer()

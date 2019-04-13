@@ -5,6 +5,7 @@ import { Jumbotron, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { dictionaryContainer } from "../containers/dictionary";
+import Cookies from 'universal-cookie';
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ export default class LoginPage extends Component {
       password: "",
       submitted: false
     };
+    this.cookies = new Cookies()
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -61,14 +63,15 @@ export default class LoginPage extends Component {
       requestData
     );
     const response = await request
+    this.cookies.set('Access-Token', response.headers.get('Access-Token'))
+    this.cookies.set('Client', response.headers.get('Client'))
+    this.cookies.set('Uid', response.headers.get('Uid'))
+    this.cookies.set('Expiry', response.headers.get('Expiry'))
+
     var error = true;
 
     if (response.success == undefined) {
       error = false
-      window.sessionStorage.setItem('Access-Token', response.headers.get('Access-Token'))
-      window.sessionStorage.setItem('Client', response.headers.get('Client'))
-      window.sessionStorage.setItem('Uid', response.headers.get('Uid'))
-      window.sessionStorage.setItem('Expiry', response.headers.get('Expiry'))
     } else {
       error = true
     }

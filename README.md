@@ -1,24 +1,13 @@
-# README
+# Allegro Product Scanner
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+live app 
+- [frontend](https://tardis-front-2.herokuapp.com)
+- [backend](https://tardis-back.herokuapp.com)
 
-Things you may want to cover:
 
-* Ruby version
+The app serves as an API for the corresponding front end app written in React. The API uses [QuaggaJS](https://serratus.github.io/quaggaJS/examples/live_w_locator.html) to scan EAN, EAN-extended and EAN-8 barcodes which are converted to string names and searched for on [Allegro](https://allegro.pl) using a service worker. This happens asynchronously while all the results are fetched from Allegro. 
+Later the frontend can pull these results to parse them in views.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## run 
+    bundle install 
+    rails s
